@@ -1,0 +1,86 @@
+root@escbash-lab:~# gh --version
+-bash: gh: command not found
+root@escbash-lab:~# apt install gh
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  gh
+0 upgraded, 1 newly installed, 0 to remove and 25 not upgraded.
+Need to get 8836 kB of archives.
+After this operation, 45.4 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 gh amd64 2.45.0-1ubuntu0.3 [8836 kB]
+Fetched 8836 kB in 0s (34.0 MB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79, <STDIN> line 1.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package gh.
+(Reading database ... 32777 files and directories currently installed.)
+Preparing to unpack .../gh_2.45.0-1ubuntu0.3_amd64.deb ...
+Unpacking gh (2.45.0-1ubuntu0.3) ...
+Setting up gh (2.45.0-1ubuntu0.3) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+root@escbash-lab:~# gh --version
+gh version 2.45.0 (2025-07-18 Ubuntu 2.45.0-1ubuntu0.3)
+https://github.com/cli/cli/releases/tag/v2.45.0
+root@escbash-lab:~# gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? HTTPS
+? Authenticate Git with your GitHub credentials? Yes
+? How would you like to authenticate GitHub CLI? Paste an authentication token
+Tip: you can generate a Personal Access Token here https://github.com/settings/tokens
+The minimum required scopes are 'repo', 'read:org', 'workflow'.
+? Paste your authentication token: **********************************
+error validating token: missing required scope 'read:org'
+root@escbash-lab:~# gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? HTTPS
+? Authenticate Git with your GitHub credentials? Yes
+? How would you like to authenticate GitHub CLI? Login with a web browser
+
+! First copy your one-time code: 37DF-A2DF
+Press Enter to open github.com in your browser... 
+! Failed opening a web browser at https://github.com/login/device
+  exec: "xdg-open,x-www-browser,www-browser,wslview": executable file not found in $PATH
+  Please try entering the URL in your browser manually
+
+^C
+root@escbash-lab:~# gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? HTTPS
+? Authenticate Git with your GitHub credentials? Yes
+? How would you like to authenticate GitHub CLI? Paste an authentication token
+Tip: you can generate a Personal Access Token here https://github.com/settings/tokens
+The minimum required scopes are 'repo', 'read:org', 'workflow'.
+? Paste your authentication token: **********************************
+- gh config set -h github.com git_protocol https
+✓ Configured git protocol
+! Authentication credentials saved in plain text
+✓ Logged in as Srinivas-Badugu
+root@escbash-lab:~# ls
+root@escbash-lab:~# gh repo create
+? What would you like to do? Create a new repository on GitHub from scratch
+? Repository name Github_repo1
+? Description Test repo creating from CLI
+? Visibility Public
+? Would you like to add a README file? Yes
+? Would you like to add a .gitignore? Yes
+? Choose a .gitignore template Actionscript
+? Would you like to add a license? No
+? This will create "Github_repo1" as a public repository on GitHub. Continue? Yes
+✓ Created repository Srinivas-Badugu/Github_repo1 on GitHub
+  https://github.com/Srinivas-Badugu/Github_repo1
+? Clone the new repository locally? Yes
+Cloning into 'Github_repo1'...
+root@escbash-lab:~# ls
+Github_repo1
+root@escbash-lab:~# cd Github_repo1/
+root@escbash-lab:~/Github_repo1# ls
+README.md
+root@escbash-lab:~/Github_repo1# ls -la
+total 20
+drwxr-xr-x 3 root root 4096 Nov 24 16:35 .
+drwx------ 6 root root 4096 Nov 24 16:35 ..
+drwxr-xr-x 8 root root 4096 Nov 24 16:35 .git
+-rw-r--r-- 1 root root  350 Nov 24 16:35 .gitignore
+-rw-r--r-- 1 root root   43 Nov 24 16:35 README.md
